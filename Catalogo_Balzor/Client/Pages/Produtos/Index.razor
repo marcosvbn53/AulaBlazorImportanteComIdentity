@@ -1,0 +1,90 @@
+﻿@page "/produto"
+@inherits IndexBase
+@attribute [Authorize]
+
+
+
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <div style="margin:0px 0px 20px 0px;">
+            <a class="btn btn-success" href="/produto/create">Novo produto</a>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <h2>Somente usuário Admin pode incluir um produto</h2>
+    </NotAuthorized>
+</AuthorizeView>
+
+
+<br/>
+    <div class="form-inline">
+        <label class="sr-only" form="filter-name">Filtro</label>
+        <input class="form-control mb-2 mr-sm-2" placeholder="Filtrar pelo nome" @bind="NomeFiltro"/>
+        <button type="button" class="btn btn-primary mr-sm-2 mb-2" @onclick="Filtrar">
+            Filtrar
+        </button>
+        <button type="button" class="btn btn-danger mb-2" @onclick="LimparFiltro">
+            Limpar
+        </button>
+    </div>
+
+<br/>
+
+@if (Produtos == null)
+{
+    <p><em>Carregamento...</em></p>
+}
+else if (Produtos.Count == 0)
+{
+    <p><em>Não existem produtos cadastros...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Editor</th>
+                <th>Deleta</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var produto in Produtos)
+            {
+                <tr>
+                    <td>@produto.Nome</td>
+                    <td>@produto.Descricao</td>
+                    <td>@produto.Preco</td>
+                    <td>
+                        <a class="btn btn-primary"
+                   href="/produto/edit/@produto.ProdutoId">
+                            Editar
+                        </a>
+                    </td>
+                    <td>
+                        <a style="color:white" class="btn btn-danger" @onclick="@(()=> DeletarProduto(produto.ProdutoId))">
+                            Deletar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<hr />
+
+<Confirma @ref="confirma"
+          OnCancelar="CancelarDeletar"
+          OnConfirma="DeletarConfirma">
+    <div>Deseja realmente excluir o produto</div>
+
+</Confirma>
+
+<Paginacao QuantidadeTotalPaginas="QuantidadeTotalPaginas"
+           PaginaAtual="PaginaAtual"
+           Raio="2"
+           PaginaSelecionada="PaginaSelecionada">
+
+</Paginacao>

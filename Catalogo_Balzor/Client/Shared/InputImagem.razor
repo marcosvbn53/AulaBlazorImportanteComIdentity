@@ -1,0 +1,29 @@
+﻿@inherits InputImagemBase
+
+<div>
+    <label>@Label</label>
+    <div>
+        <button type="button" class="btn btn-secondary" @onclick=@(()=> AbrirDialogoSelecaoDeImagem())>Selecionar Imagem</button>
+        <FileSelect @ref="imagemSelecaoArquivo" FilesSelected="ObterImagemSelecionada" Accept=".jpg,.jpeg,.png"></FileSelect>
+    </div>
+</div>
+
+<div>
+    @if (ImagemBase64 != null)
+    {
+        <div>
+            <div style="margin:10px;">
+                <img src="data:image/jpeg;base64, @ImagemBase64" style="width:150px" />
+            </div>
+        </div>
+    }
+    @if (ImagemRemota != null)
+    {
+        <div>
+            <div style="margin:10px">
+                @*<img src="@ImagemRemota" style="width: 150px"/>*@
+                <img  src="data:image/jpeg;base64, @ImagemRemota" style="width: 150px;"/>
+            </div>
+        </div>
+    }
+</div>

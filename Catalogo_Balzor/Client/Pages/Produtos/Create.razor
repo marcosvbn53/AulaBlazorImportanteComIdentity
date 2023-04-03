@@ -1,0 +1,14 @@
+﻿@page "/produto/create"
+@inherits CreateBase
+@attribute [Authorize(Roles = "Escrivão")]
+
+
+<h2>Novo Produto</h2>
+
+<ProdutoForm Produto="@Produto"
+             ImagemRemota="@ImagemRemota"
+             OnValidSubmit="CriarProduto"
+             ButtonTextSubmit="Salvar"
+             ButtonTextCancelar="Cancelar">
+
+</ProdutoForm>

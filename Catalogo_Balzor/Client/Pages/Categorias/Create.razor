@@ -1,0 +1,13 @@
+﻿@page "/categoria/create"
+@inherits CreateBase
+@attribute [Authorize(Roles = "Escrivão")]
+
+<h2>Nova Categoria</h2>
+
+<CategoriaForm Categoria="@Categoria"
+               OnValidSubmit="@CriarCategoria" 
+               ButtonTextSubmit="Salvar"
+               ButtonTextCancelar="Cancelar">
+
+</CategoriaForm>
+

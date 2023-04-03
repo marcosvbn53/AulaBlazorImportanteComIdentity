@@ -1,0 +1,69 @@
+﻿@inherits ProdutoFormBase
+
+<EditForm Model="@Produto" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+
+    <div class="form-group">
+        <label form="nome">Nome:</label>
+        <div>
+            <InputText @bind-Value="Produto.Nome" class="form-control"/>
+            <ValidationMessage For="@(()=> Produto.Nome)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label form="descricao">Descrição: </label>
+        <div>
+            <InputTextArea @bind-Value="Produto.Descricao" class="form-control" />
+            <ValidationMessage For="@(()=> Produto.Descricao)" />
+        </div>        
+    </div>
+
+    <div class="form-group">
+        <label form="preco">Preço</label>
+        <div>
+            <InputNumber @bind-Value="Produto.Preco" class="form-control" />
+            <ValidationMessage For="@(()=> Produto.Preco)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label form="categoria">Categoria:</label>
+        <select @onchange="CategoriaSelectionChange" class="form-control">
+            @if(Categorias != null)
+            {
+                @foreach(var categoria in Categorias)
+                {
+                    <option value="@categoria.CategoriaId" selected="@(categoria.CategoriaId == Produto.CategoriaId ? true : false)">
+                        @categoria.Nome
+                    </option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        @*<label form="categoria">Imagem:</label>
+        <InputText @bind-Value="Produto.ImageUrl" class="form-control"/>*@
+        <InputImagem Label="Imagem"
+                     ImagemSelecionada="ImagemSelecionada"
+                     ImagemRemota="@ImagemRemota">
+
+        </InputImagem>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        @ButtonTextSubmit
+    </button>
+
+    <button type="button" class="btn btn-danger"
+            @onclick="@(()=> navigationManager.NavigateTo("produto"))">
+            @ButtonTextCancelar
+    </button>
+
+
+
+
+
+</EditForm>

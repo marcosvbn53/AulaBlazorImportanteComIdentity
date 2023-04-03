@@ -1,0 +1,11 @@
+﻿@inherits AvisoBase
+
+@if (Exibir)
+{
+    <div class="alert alert-secondary mt-4" role="alertdialog">
+        @foreach (var erro in Mensagens.Errors)
+        {
+            <h5>@erro.ErrorMessage</h5>            
+        }
+    </div>
+}

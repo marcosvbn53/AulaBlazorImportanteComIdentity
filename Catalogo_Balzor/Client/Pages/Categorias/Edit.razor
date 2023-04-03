@@ -1,0 +1,12 @@
+﻿@page "/categoria/edit/{CategoriaId:int}"
+@inherits EditBase
+
+<h2>Editar Categoria</h2>
+
+<CategoriaForm Categoria="@Categoria"
+               OnValidSubmit="@EditarCategoria"
+               ButtonTextSubmit="Salvar"
+               ButtonTextCancelar="Cancelar">
+
+</CategoriaForm>
+

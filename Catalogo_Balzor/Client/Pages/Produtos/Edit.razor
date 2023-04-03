@@ -1,0 +1,11 @@
+﻿@page "/produto/edit/{ProdutoId:int}"
+@inherits EditBase
+
+
+<ProdutoForm  Produto="@Produto"
+              OnValidSubmit="@EditarProduto"
+              ButtonTextCancelar="Cancelar"
+              ButtonTextSubmit="Salvar"
+              ImagemRemota="@ImagemRemota">
+
+</ProdutoForm>

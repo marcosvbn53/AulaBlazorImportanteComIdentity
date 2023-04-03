@@ -1,0 +1,28 @@
+﻿@page "/"
+@inherits indexBase
+
+<PageTitle>Index</PageTitle>
+
+<h1>Catálogo de Produtos</h1>
+<hr/>
+<h2>Macoratti.net</h2>
+
+@*<AuthorizeView Roles="@Perfis">
+    <Authorized>
+        <h4>Bem vindo @context.User.Identity.Name !</h4>
+        @if (context.User.IsInRole("Admin"))
+        {
+            <span>Usuário Admin detectado </span>
+        }else if(context.User.IsInRole("Escricao"))
+        {
+            <span>Usuário Escrivão detectado </span>
+        }
+        else if (context.User.IsInRole("Registrador"))
+        {
+            <span>Usuário Registrador detectado </span>
+        }
+    </Authorized>
+    <NotAuthorized>
+        <h3>Usuário não authorizado detectado!</h3>
+    </NotAuthorized>
+</AuthorizeView>*@

@@ -1,0 +1,36 @@
+﻿@page "/register"
+@inherits Registerbase
+
+<h2>Registrar Novo Usuário</h2>
+
+<Aviso Exibir="@ExisteErros()" Mensagens="@Mensagens" />
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Informe as credenciais do novo usuário</h5>
+
+        <EditForm Model="UsuarioRegistro" OnValidSubmit="RegistrarUsuario">
+            <DataAnnotationsValidator/>
+            <ValidationSummary/>
+
+            <div class="form-group">
+                <label for="email"></label>
+                <InputText class="form-control" @bind-Value="UsuarioRegistro.Email"/>
+                <ValidationMessage For="@(() => UsuarioRegistro.Email)"/>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <InputText type="password" class="form-control"
+                           @bind-Value="UsuarioRegistro.Password" />
+                <ValidationMessage For="@(()=> UsuarioRegistro.Password)"/>
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary btn-sm">
+                Registrar Usuário
+            </button>
+
+        </EditForm>
+
+    </div>
+</div>

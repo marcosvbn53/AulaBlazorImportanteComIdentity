@@ -1,0 +1,17 @@
+﻿@page "/produto/detalhe/{produtoid:int}"
+@inherits DetalheBase
+
+<div class="col-sm-12 col-lg-12 col-md-12">
+    <div class="card" style="border:none">
+        <img src="data:image/jpeg;base64, @Produto.ImageUrl" class="img-rounded"  alt="@Produto.Nome" width="300" height="300"/>
+        <div class="card-body">
+            <h3 class="pull-right">@Produto.Preco</h3>
+            <h3 class="card-title">@Produto.Nome</h3>
+            <p class="card-text">@Produto.Descricao</p>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a href="/catalogo/@Produto.CategoriaId" class="btn btn-link">Retornar</a>
+</div>

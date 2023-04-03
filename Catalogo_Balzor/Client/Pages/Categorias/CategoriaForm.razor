@@ -1,0 +1,30 @@
+﻿@inherits CategoriaFormBase
+
+<EditForm Model="@Categoria" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+
+    <div class="form-group">
+        <label form="nome">Nome</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Categoria.Nome" id="txtNomeCategoria" />
+            <ValidationMessage For="@(() => Categoria.Nome)"/>
+        </div>
+    </div>
+
+    <br/>
+    <div class="form-group">
+        <label form="descricao">Descrição</label>
+        <div>
+            <InputText @bind-Value="@Categoria.Descricao" class="form-control"/>
+            <ValidationMessage For="@(()=> Categoria.Descricao)"/>
+        </div>
+    </div>
+
+    <br/>    
+    <br/>
+    <button type="submit" class="btn btn-success">@ButtonTextSubmit</button>
+    <button class="btn btn-danger" @onclick="@(()=> navigationManager.NavigateTo("categoria"))">@ButtonTextCancelar</button>
+
+</EditForm>
+

@@ -1,0 +1,28 @@
+﻿@inherits LoginBase
+@page "/login"
+
+<div class="container col-6">
+    <Aviso Exibir="ExisteErros()" Mensagens="Mensagens" />
+            
+    <div class="card-body">
+        <h5 class="card-title">Login</h5>
+        <EditForm Model="UserLogin" OnValidSubmit="FazerLogin">
+            <DataAnnotationsValidator/>
+
+            <div class="form-group">
+                <label>E-mail</label>
+                <InputText class="form-control"
+                           @bind-Value="UserLogin.Email"/>
+                <ValidationMessage For="@(()=> UserLogin.Email)"/>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <InputText type="password" class="form-control"
+                           @bind-Value="UserLogin.Password" />
+                <ValidationMessage For="@(()=> UserLogin.Password)"/>
+            </div>
+            <button type="submit" class="btn btn-outline-primary btn-sm">Login</button>
+        </EditForm>
+    </div>
+</div>
